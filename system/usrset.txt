@@ -167,7 +167,7 @@ enableOldMirrorObjects = false
 // =================================================
 mouseWheelZoomFactor = 1
 dynamicActivityRange = 1000
-objectTranslationStepSize = 0.0250000004
+objectTranslationStepSize = 0.0249999985
 objectRotationStepSize = 5
 processorCoreAffinity = 0 // recommended to keep 0 (-1:os default, 0:all threads on same core, m: affinity mask (bit1=core1, bit2=core2, etc.))
 freeServerPortStart = 20000
