@@ -111,7 +111,7 @@ defaultDirectoryForScenes =  // absolute path, e.g. d:/myScenes (or leave empty 
 defaultDirectoryForModels =  // absolute path, e.g. d:/myModels (or leave empty for default path)
 defaultDirectoryForCadFiles =  // absolute path, e.g. d:/myCadFiles (or leave empty for default path)
 defaultDirectoryForMiscFiles =  // absolute path, e.g. d:/myMiscFiles (or leave empty for default path)
-defaultDirectoryForExternalScriptEditor =C:\Program Files\CoppeliaRobotics\CoppeliaSimEdu\ExtEditorScrips
+defaultDirectoryForExternalScriptEditor =  // absolute path, e.g. d:/myScriptTempFiles (or leave empty for default path)
 defaultDirectoryForRemoteApiFiles =  // absolute path, e.g. d:/myRemoteApiTransfers (or leave empty for default path)
 
 
@@ -186,7 +186,7 @@ useExternalLuaLibrary = false // if true, will call all Lua functions via the si
 additionalLuaPath =  // e.g. d:/myLuaRoutines
 desktopRecordingIndex = 0
 desktopRecordingWidth = -1 // -1=default.
-externalScriptEditor =C:\Users\mslab\AppData\Local\atom\atom.exe
+externalScriptEditor = 
 xmlExportSplitSize = 0 // 0=generate a single file.
 xmlExportKnownFormats = true // true=if several files are generated, mesh and image files are saved under known formats.
 
