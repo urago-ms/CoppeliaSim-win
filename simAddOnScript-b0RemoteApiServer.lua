@@ -1,1 +1,1 @@
-sim.include('/lua/b0RemoteApiServer.lua')
+require('b0RemoteApiServer')

@@ -286,7 +286,7 @@ updateStatisticsDialog=function(totalP,detectedPNoLabel,detectedPWithLabel)
     end
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
     sensor1=sim.getObjectHandle('genericDetectionWindow_sensor1')
     sensor2=sim.getObjectHandle('genericDetectionWindow_sensor2')
@@ -326,7 +326,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
     totalPartWithoutLabelCnt=0
 end
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     local t=sim.getSimulationTime()
     local dt=t-previousTime
     local detectedParts,allParts=getAllVisiblePartsInWindow()

@@ -23,7 +23,7 @@ getColorFromIntensity=function(intensity)
     return coll
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     dummy=sim.getObjectAssociatedWithScript(sim.handle_self)
     model=getRobotHandle(dummy)
     local ragnarSettings=sim.readCustomDataBlock(model,simBWF.modelTags.RAGNAR)
@@ -38,7 +38,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
 end
 
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     if showTrajectory then
         local ragnarSettings=sim.readCustomDataBlock(model,simBWF.modelTags.RAGNAR)
         ragnarSettings=sim.unpackTable(ragnarSettings)

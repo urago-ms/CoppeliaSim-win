@@ -146,7 +146,7 @@ removeTrackedPart=function(partHandle)
     trackedParts[partHandle]=nil
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
     local data=sim.readCustomDataBlock(model,'XYZ_STATICPICKWINDOW_INFO')
     data=sim.unpackTable(data)
@@ -166,7 +166,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
     mode=0 -- 0=fill mode (waiting for sensor trigger), 1=empty mode (waiting for trackedParts to be empty)
 end
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     local t=sim.getSimulationTime()
     local data=sim.readCustomDataBlock(model,'XYZ_STATICPICKWINDOW_INFO')
     data=sim.unpackTable(data)

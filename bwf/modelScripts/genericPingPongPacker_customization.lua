@@ -1054,7 +1054,7 @@ prepareAndClearTrackingWIndowInfo=function()
     sim.writeCustomDataBlock(targetTracking,simBWF.modelTags.TRACKINGWINDOW,sim.packTable(info))
 end
 
-if (sim_call_type==sim.customizationscriptcall_initialization) then
+function sysCall_init()
     dlgMainTabIndex=0
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
     targetTracking=sim.getObjectHandle('genericPingPongPacker_targetTracking')
@@ -1134,7 +1134,7 @@ if (sim_call_type==sim.customizationscriptcall_initialization) then
         cartridges[cartr]['targets']=sim.getObjectHandle('genericPingPongPacker_cartridge'..cartr..'_targets')
     end
 
-	sim.setScriptAttribute(sim.handle_self,sim.customizationscriptattribute_activeduringsimulation,true)
+	
     updatePluginRepresentation()
     previousDlgPos,algoDlgSize,algoDlgPos,distributionDlgSize,distributionDlgPos,previousDlg1Pos=simBWF.readSessionPersistentObjectData(model,"dlgPosAndSize")
 end
@@ -1148,11 +1148,11 @@ showOrHideUiIfNeeded=function()
     end
 end
 
-if (sim_call_type==sim.customizationscriptcall_nonsimulation) then
+function sysCall_nonSimulation()
     showOrHideUiIfNeeded()
 end
 
-if (sim_call_type==sim.customizationscriptcall_simulationsensing) then
+function sysCall_sensing()
     if simJustStarted then
         updateEnabledDisabledItemsDlg()
     end
@@ -1160,11 +1160,11 @@ if (sim_call_type==sim.customizationscriptcall_simulationsensing) then
     showOrHideUiIfNeeded()
 end
 
-if (sim_call_type==sim.customizationscriptcall_simulationpause) then
+function sysCall_suspend()
     showOrHideUiIfNeeded()
 end
 
-if (sim_call_type==sim.customizationscriptcall_firstaftersimulation) then
+function sysCall_afterSimulation()
     prepareAndClearTrackingWIndowInfo()
     updateEnabledDisabledItemsDlg()
     local conf=readInfo()
@@ -1180,7 +1180,7 @@ if (sim_call_type==sim.customizationscriptcall_firstaftersimulation) then
     makeTargetDummiesVisible(true)
 end
 
-if (sim_call_type==sim.customizationscriptcall_lastbeforesimulation) then
+function sysCall_beforeSimulation()
     prepareAndClearTrackingWIndowInfo()
     simJustStarted=true
     enableStopper(cartridges[1]['stopper'],false)
@@ -1195,16 +1195,16 @@ if (sim_call_type==sim.customizationscriptcall_lastbeforesimulation) then
     makeTargetDummiesVisible(false)
 end
 
-if (sim_call_type==sim.customizationscriptcall_lastbeforeinstanceswitch) then
+function sysCall_beforeInstanceSwitch()
     removeDlg()
     removeFromPluginRepresentation()
 end
 
-if (sim_call_type==sim.customizationscriptcall_firstafterinstanceswitch) then
+function sysCall_afterInstanceSwitch()
     updatePluginRepresentation()
 end
 
-if (sim_call_type==sim.customizationscriptcall_cleanup) then
+function sysCall_cleanup()
     removeDlg()
     removeFromPluginRepresentation()
     simBWF.writeSessionPersistentObjectData(model,"dlgPosAndSize",previousDlgPos,algoDlgSize,algoDlgPos,distributionDlgSize,distributionDlgPos,previousDlg1Pos)

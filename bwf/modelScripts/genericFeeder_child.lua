@@ -365,7 +365,7 @@ function getBaseAndParts(h)
     end
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
     producedPartsDummy=sim.getObjectHandle('genericFeeder_ownedParts')
     smallLabel=sim.getObjectHandle('genericFeeder_smallLabel')
@@ -416,7 +416,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
     end
 end
 
-if (sim_call_type==sim.childscriptcall_actuation) then
+function sysCall_actuation()
     local t=sim.getSimulationTime()
     local dt=sim.getSimulationTimeStep()
 

@@ -3,9 +3,47 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <iostream>
 
 namespace sim
 {
+    void Plugin::setName(const std::string &name)
+    {
+        name_ = name;
+    }
+
+    std::string Plugin::name() const
+    {
+        return name_;
+    }
+
+    void Plugin::setExtVersion(const std::string &s)
+    {
+        simSetModuleInfo(name_.c_str(), sim_moduleinfo_extversionstr, s.c_str(), 0);
+    }
+
+    void Plugin::setExtVersion(int i)
+    {
+        simSetModuleInfo(name_.c_str(), sim_moduleinfo_extversionint, 0, i);
+    }
+
+    void Plugin::setBuildDate(const std::string &s)
+    {
+        simSetModuleInfo(name_.c_str(), sim_moduleinfo_builddatestr, s.c_str(), 0);
+    }
+
+    void Plugin::setVerbosity(int i)
+    {
+        simSetModuleInfo(name_.c_str(), sim_moduleinfo_verbosity, 0, i);
+    }
+
+    int Plugin::getVerbosity()
+    {
+        int v = sim_verbosity_default;
+        simGetModuleInfo(name_.c_str(), sim_moduleinfo_verbosity, nullptr, &v);
+        return v;
+    }
+
     void Plugin::onStart()
     {
     }
@@ -57,7 +95,6 @@ namespace sim
                 firstInstancePass = false;
             }
             break;
-#if SIM_PROGRAM_FULL_VERSION_NB >= 3060104 // 3.6.1.rev4
         case sim_message_eventcallback_lastinstancepass:
             /*
             called on the last client application loop pass (the instancepass message is not sent)
@@ -66,7 +103,6 @@ namespace sim
                 onLastInstancePass();
             }
             break;
-#endif // SIM_PROGRAM_FULL_VERSION_NB >= 3060104
         case sim_message_eventcallback_instanceswitch:
             /*
             scene was switched (react to this message in a similar way as you would react to

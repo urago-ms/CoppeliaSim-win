@@ -12,7 +12,9 @@ coppeliaRobotics
                   |__ common
                   |__ simMath
                   |__ coppeliaGeometricRoutines
+                  |__ coppeliaKinematicsRoutines
                   |__ simExtGeometric
+                  |__ simExtIK
                   |__ simExtDynamics
                   |__ libPlugin
                   |__ simExtCodeEditor
@@ -49,7 +51,8 @@ coppeliaRobotics
                   |__ simExtAssimp
                   |__ simExtOpenMesh
                   |__ simExtOpenGL3Renderer
-                  |__ coppeliaKinematicsRoutines
+                  |__ simExtGLTF
+                  |__ simExtURLDrop
                   |__ standAloneKinematicsDemo1
                   |__ standAloneKinematicsDemo2
                   |__ standAloneKinematicsDemo3
@@ -104,9 +107,11 @@ Various common items:
 -   'b0RemoteApiBindings' (requires 'bluezero' if libs need to be rebuilt)
     https://github.com/CoppeliaRobotics/b0RemoteApiBindings
 
+-   'coppeliaGeometricRoutines' (requires 'include', 'common' and 'simMath'):
+    https://github.com/CoppeliaRobotics/coppeliaGeometricRoutines
+
 -   'coppeliaKinematicsRoutines' (requires 'include', 'common' and 'simMath'):
     https://github.com/CoppeliaRobotics/coppeliaKinematicsRoutines
-
     
 Major plugins:
 --------------
@@ -116,6 +121,9 @@ Major plugins:
 
 -   'simExtGeometric' (requires 'include', 'common', 'simMath' and coppeliaGeometricRoutines):
     https://github.com/CoppeliaRobotics/simExtGeometric
+
+-   'simExtIK' (requires 'include', 'common', 'simMath' and coppeliaKinematicsRoutines):
+    https://github.com/CoppeliaRobotics/simExtIK
 
 -   'simExtCodeEditor' (requires 'include', 'common' and 'QScintilla'):
     https://github.com/CoppeliaRobotics/simExtCodeEditor
@@ -209,8 +217,13 @@ Various plugins:
     https://github.com/CoppeliaRobotics/simExtK3
 
 -   'simExtOpenGL3Renderer' (requires 'include' and 'common'):
-    https://github.com/stepjam/simExtOpenGL3Renderer
+    https://github.com/stepjam/simExtOpenGL3Renderer or https://github.com/CoppeliaRobotics/simExtOpenGL3Renderer
 
+-   'simExtGLTF' (requires 'include' and 'common'):
+    https://github.com/CoppeliaRobotics/simExtGLTF
+
+-   'simExtURLDrop' (requires 'include' and 'common'):
+    https://github.com/CoppeliaRobotics/simExtURLDrop
 
 Various other repositories:		
 ---------------------------

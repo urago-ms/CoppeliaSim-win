@@ -17,7 +17,7 @@ displayGreyTargets=function(targets)
     end
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectHandle('genericPingPongPacker')
     trackingWindowModel=sim.getObjectAssociatedWithScript(sim.handle_self)
     local modelData=sim.readCustomDataBlock(model,simBWF.modelTags.CONVEYOR)
@@ -37,7 +37,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
     currentCartridgeIndex=1
 end
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     trackedLocations=allTrackedLocations[currentCartridgeIndex]
     local data=sim.readCustomDataBlock(trackingWindowModel,simBWF.modelTags.TRACKINGWINDOW)
     data=sim.unpackTable(data)

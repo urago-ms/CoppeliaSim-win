@@ -62,7 +62,7 @@ function isPartDetected(partHandle)
     return math.abs(p[1])<width*0.5 and math.abs(p[2])<length*0.5 and math.abs(p[3])<height*0.5
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
 --    sensor=sim.getObjectHandle('genericPartTagger_sensor')
     local data=sim.readCustomDataBlock(model,simBWF.modelTags.PARTTAGGER)
@@ -81,7 +81,7 @@ if (sim_call_type==sim.childscriptcall_initialization) then
     counter=0
 end
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     local t=sim.getSimulationTime()
     if changeAnything then
         local line=''

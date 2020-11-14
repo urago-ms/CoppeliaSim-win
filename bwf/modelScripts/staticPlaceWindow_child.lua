@@ -249,7 +249,7 @@ removeTrackedLocation=function(associatedDummyHandle)
     end
 end
 
-if (sim_call_type==sim.childscriptcall_initialization) then
+function sysCall_init()
     model=sim.getObjectAssociatedWithScript(sim.handle_self)
     local data=sim.readCustomDataBlock(model,simBWF.modelTags.OLDSTATICPLACEWINDOW)
     data=sim.unpackTable(data)
@@ -284,7 +284,7 @@ end
 
 
 
-if (sim_call_type==sim.childscriptcall_actuation) then
+function sysCall_actuation()
     if doLiftMovements then
         if not waitTime then
             local jmp={0,0,0}
@@ -322,7 +322,7 @@ if (sim_call_type==sim.childscriptcall_actuation) then
     end
 end
 
-if (sim_call_type==sim.childscriptcall_sensing) then
+function sysCall_sensing()
     local t=sim.getSimulationTime()
     local data=sim.readCustomDataBlock(model,simBWF.modelTags.OLDSTATICPLACEWINDOW)
     data=sim.unpackTable(data)

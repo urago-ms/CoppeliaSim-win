@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import argparse
 import os
 import os.path
@@ -54,7 +56,7 @@ def runsubprocess(what, cmdargs):
         sys.exit(1)
 
 def runtool(what, *cmdargs):
-    runsubprocess(what, ['python', rel(what + '.py')] + list(cmdargs))
+    runsubprocess(what, [sys.executable, rel(what + '.py')] + list(cmdargs))
 
 def runprogram(what, *cmdargs):
     runsubprocess(what, [what] + list(cmdargs))
@@ -83,8 +85,8 @@ except OSError as exc:
 plugin = parse(args.xml_file)
 
 if args.gen_stubs:
-    for ext in ('cpp', 'h'):
-        runtool('external/pycpp/pycpp', '-p', 'xml_file=' + args.xml_file, '-i', rel('cpp/stubs.' + ext), '-o', output('stubs.' + ext), '-P', self_dir)
+    for fn in ('stubs.cpp', 'stubs.h', 'stubsPlusPlus.cpp'):
+        runtool('external/pycpp/pycpp', '-p', 'xml_file=' + args.xml_file, '-i', rel('cpp/' + fn), '-o', output(fn), '-P', self_dir)
 
 if args.gen_lua_xml:
     if not args.lua_file:
