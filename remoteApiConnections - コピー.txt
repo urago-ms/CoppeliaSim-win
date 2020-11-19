@@ -9,6 +9,6 @@
 // In above strings, @ can be any number starting with 1. If more than one server service is required, then numbers need to be consecutive and starting with 1
 
 // Let's start a continuous remote API server service on port 19997:
-portIndex1_port             = 19998
-portIndex1_debug            = true
-portIndex1_syncSimTrigger   = false
+portIndex1_port             = 19997
+portIndex1_debug            = false
+portIndex1_syncSimTrigger   = true
