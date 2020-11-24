@@ -55,12 +55,21 @@ if clientID!=-1:
     inInts=[robotHandle,collisionChecking,minConfigsForIkPath,minConfigsForPathPlanningPath,maxConfigsForDesiredPose,maxTrialsForConfigSearch,searchCount]
     inFloats=robotInitialState+target1Pose+approachVector
     res,retInts,path,retStrings,retBuffer=sim.simxCallScriptFunction(clientID,'remoteApiCommandServer',sim.sim_scripttype_childscript,'findPath_goalIsPose',inInts,inFloats,[],emptyBuff,sim.simx_opmode_oneshot_wait)
+
+    print(robotInitialState)
+    print(target1Pose)
+    print(approachVector)
+    print(inFloats)
+
+
     
     if (res==0) and len(path)>0:
         # The path could be in 2 parts: a path planning path, and a linear approach path:
         part1StateCnt=retInts[0]
         part2StateCnt=retInts[1]
         path1=path[:part1StateCnt*6]
+
+        print(path1)
         
         # Visualize the first path:
         res,retInts,retFloats,retStrings,retBuffer=sim.simxCallScriptFunction(clientID,'remoteApiCommandServer',sim.sim_scripttype_childscript,'visualizePath',[robotHandle,255,0,255],path1,[],emptyBuff,sim.simx_opmode_oneshot_wait)
